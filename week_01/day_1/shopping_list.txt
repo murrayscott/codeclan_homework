@@ -1,0 +1,4 @@
+eggs
+milk
+coffee
+tea
