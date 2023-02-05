@@ -12,6 +12,6 @@ class Room:
     def guest_count(self):
         return len(self.room)
 
-    def add_guest(self, guest, max_guests):
-        if self.guest_count() < max_guests:
+    def add_guest(self, guest, max_guests, cost, wallet):
+        if self.guest_count() < max_guests and wallet >= cost :
             self.room.append(guest)

@@ -40,17 +40,20 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(0, self.room1.guest_count())
 
     def test_add_guest(self):
-        self.room1.add_guest("Calum Gilhooley",3)
+        self.room1.add_guest("Calum Gilhooley",3, 12, 54.76)
         self.assertEqual(1, self.room1.guest_count())
 
     def test_add_1_too_many_guests(self):
-        self.room1.add_guest("Calum Gilhooley",3)
-        self.room1.add_guest("Rank Hovis",3)
-        self.room1.add_guest("Mr Don",3)
-        self.room1.add_guest("Mr George",3)
+        self.room1.add_guest("Calum Gilhooley",3, 12, 54.76)
+        self.room1.add_guest("Rank Hovis",3, 12, 34.43)
+        self.room1.add_guest("Mr Don",3, 12, 45.43)
+        self.room1.add_guest("Mr George",3, 12, 65.12)
         self.assertEqual(3, self.room1.guest_count())
-                
+
+    def test_customer_has_funds(self):
+        self.room1.add_guest("Calum Gilhooley",3, 12.00, 54.76)
+        self.assertEqual(1, self.room1.guest_count())        
         
-    # def test_add_guest_too_room(self):
-    #     self.Room.add_guest("Calum Gilgooley")
-    #     self.assertEqual("Calum Gilhooley", self.room1.room)
+    def test_customer_has_insufficient_funds(self):
+        self.room1.add_guest("Calum Gilhooley",3, 12.00, 11.76)
+        self.assertEqual(0, self.room1.guest_count())                
