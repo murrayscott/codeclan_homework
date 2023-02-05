@@ -1,9 +1,12 @@
 import unittest
 from src.room import Room
+from src.song import Song
+from src.guest import Guest
+
 
 class TestRoom(unittest.TestCase):
     def setUp(self):
-        self.room1 = Room("The Squalking Canaries",1 ,8,12.00,"Calum Gilhooley","Snow Patrol","Chasing Cars")
+        self.room1 = Room("The Squalking Canaries",1 ,3,12.00,"Calum Gilhooley","Snow Patrol","Chasing Cars")
     
     def test_room_name(self):
         # ------------  AAA  ---------------
@@ -19,7 +22,7 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(1, self.room1.room_number)
 
     def test_room_max_guests(self):
-        self.assertEqual(8,self.room1.max_guests)
+        self.assertEqual(3,self.room1.max_guests)
 
     def test_room_charge(self):
         self.assertEqual(12.00,self.room1.charge)
@@ -33,3 +36,21 @@ class TestRoom(unittest.TestCase):
     def test_room_song_title(self):
         self.assertEqual("Chasing Cars", self.room1.song_title)
 
+    def test_guest_count_starts_at_0(self):
+        self.assertEqual(0, self.room1.guest_count())
+
+    def test_add_guest(self):
+        self.room1.add_guest("Calum Gilhooley",3)
+        self.assertEqual(1, self.room1.guest_count())
+
+    def test_add_1_too_many_guests(self):
+        self.room1.add_guest("Calum Gilhooley",3)
+        self.room1.add_guest("Rank Hovis",3)
+        self.room1.add_guest("Mr Don",3)
+        self.room1.add_guest("Mr George",3)
+        self.assertEqual(3, self.room1.guest_count())
+                
+        
+    # def test_add_guest_too_room(self):
+    #     self.Room.add_guest("Calum Gilgooley")
+    #     self.assertEqual("Calum Gilhooley", self.room1.room)

@@ -7,3 +7,11 @@ class Room:
         self.guests = guests
         self.song_artist = song_artist
         self.song_title = song_title
+        self.room = []
+
+    def guest_count(self):
+        return len(self.room)
+
+    def add_guest(self, guest, max_guests):
+        if self.guest_count() < max_guests:
+            self.room.append(guest)
