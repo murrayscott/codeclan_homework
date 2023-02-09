@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block content %}    
+    <h1>Events Planner</h1>
+    <div class="grid_header">
+        <div>
+            Date
+        </div>
+        <div>
+            Name
+        </div>
+        <div>
+            Guest #
+        </div>
+        <div>
+            Location
+        </div>
+        <div>
+            Description
+        </div>
+        <Div>
+            Recurring
+        </Div>
+        <div>
+            Operation
+        </div>
+    </div>
+{% for event in events %}
+    <div class="list_events">
+      <div class="date">
+        {{ event.date.strftime("%d %b %Y") }} 
+      </div>
+      <div class="name">
+        {{event.name}} 
+      </div>
+      <div class="guests">
+        {{event.guests}}
+      </div>
+      <div class="location">
+        {{event.location}}
+      </div>
+      <div class="description">
+        {{ event.description }}
+      </div>
+      <div class="recurring">
+        {% if event.recurring %}
+        <span> &#9989;</span>
+        {% else %}
+        <span> &#10060;</span>
+        {% endif %}        
+      </div>
+      <div class="delete">
+        <form action="/deletebyname/{{event.name}}" method="POST">
+        <input type="submit" value="Delete">
+        </form>        
+      </div>
+
+    </div>
+    {% endfor %}
+    <hr>
+    <h3>Add Event:</h3>
+    <div class="grid_header">
+        <div>
+            Date
+        </div>
+        <div>
+            Name
+        </div>
+        <div>
+            Guest #
+        </div>
+        <div>
+            Location
+        </div>
+        <div>
+            Description
+        </div>
+        <Div>
+            Recurring
+        </Div>
+        <div>
+            Operation
+        </div>
+    </div>
+    <form class="list_events" action="/events" method="post">
+        <div>
+            <label for="date"></label>
+            <input type="date" id="date" name="date">
+        </div>
+        <div>
+            <label for="name"></label>
+            <input type="text" id="name" name="name" size="38">
+        </div>
+        <div>
+            <label for="guests"></label>
+            <input type="number" id="guests" name="guests" size ="2">           
+        </div>
+        <div>
+            <label for="location"></label>
+            <input type="text" id="location" name="location" size="16">            
+        </div>
+        <div>
+            <label for="description"></label>
+            <textarea id="description" name="description" cols="40" rows="1"></textarea>            
+        </div>
+        <div>
+            <input type="checkbox" id="recurring" name="recurring">
+            <label for="recurring"></label>            
+        </div>
+        <div>
+            <input type="submit" value="Add Event">            
+        </div>
+
+    </form>
+{% endblock %}

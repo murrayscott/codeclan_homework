@@ -1,0 +1,32 @@
+input[type='number']{
+    width: 45px;
+} 
+
+body {
+    background-color:rgb(178, 178, 178);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.base {
+    font-weight: 600;
+    font-size: 2rem ;
+    text-decoration: none;
+}
+
+.grid_header {
+    font-weight: bold;
+    display:grid;
+    grid-template-columns: 150px 300px 75px 150px auto 100px 100px;
+    grid-template-rows: 26px
+
+}
+
+.guests {
+    align-items: center;
+}
+
+.list_events {
+    display:grid;
+    grid-template-columns: 150px 300px 75px 150px auto 100px 100px;
+    grid-template-rows: 30px
+}
