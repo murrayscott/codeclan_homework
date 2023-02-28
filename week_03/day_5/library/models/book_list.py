@@ -1,4 +1,3 @@
-import datetime
 from models.books import Books
 
 book_1 = Books("Craft Beer World", "Mark Dredge", "Guidebook")

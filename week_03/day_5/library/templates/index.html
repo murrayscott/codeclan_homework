@@ -4,7 +4,7 @@
     <section>
         <h2>Book List</h2>
         <section>
-            {% for books in book_list %}
+            {% for book in book_list %}
                 <section>
                     <h3>Title : {{book.title}}</h3>
                     <h3>Author : {{book.author}}</h3>
@@ -32,6 +32,6 @@
             <label for="genre">Genre : </label>
             <input id="genre" name="genre" type="genre">
         </div>
-        <input class="button" type="submit">
+        <input type="submit">
     </form>
 {% endblock %}
