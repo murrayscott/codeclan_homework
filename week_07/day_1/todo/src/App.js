@@ -4,18 +4,20 @@ import React, {useState} from 'react';
 function App() {
 
   const [items, setItems] = useState([
-    {name: 'Buy Shopping', isHigh: true},
-    {name: 'Clean Bathroom', isHigh: false},
-    {name: "Car's MOT", isHigh: true},
+    {name: 'Buy Shopping', priority: "High"},
+    {name: 'Clean Bathroom', priority: "Low"},
+    {name: "Car's MOT", priority: "High"},
   ]);
   const [newItemName, setNewItemName] = useState('');
+
+  const [priority, setPriority] = useState("Low");
 
   function saveNewItem(event){
     event.preventDefault();
 
     const newItem = {
       name: newItemName,
-      isHigh: false,  // needs set to the value of the radio buttons
+      priority: priority, // needs set to the value of the radio buttons
     }
 
     console.log(useState);
@@ -30,8 +32,8 @@ function App() {
   };
 
   function toggleHigh (index){
-     const itemToUpdate = {...items[index]};
-    itemToUpdate.isHigh = true;
+    const itemToUpdate = {...items[index]};
+    itemToUpdate.priority = "Low";
     const newItems = [...items];
     newItems[index] = itemToUpdate;
     setItems(newItems);
@@ -39,7 +41,7 @@ function App() {
 
   function toggleLow (index){
     const itemToUpdate = {...items[index]};
-   itemToUpdate.isHigh = false;
+   itemToUpdate.priority = "High";
    const newItems = [...items];
    newItems[index] = itemToUpdate;
    setItems(newItems);
@@ -54,10 +56,10 @@ function App() {
 };
 
   const itemNodes = items.map((item, index) => {
-    return <li class =   {item.isHigh ? "high": "low"} key={index} >
+    return <li class =   {item.priority} key={index} >
       <span>{item.name}</span>
       <button onClick={() => deleteItem(index)}>Delete</button>
-      {item.isHigh ? <button onClick={() => toggleLow(index)}>High</button>: <button onClick={() => toggleHigh(index)}>Low</button>}
+      {item.priority=="High" ? <button onClick={() => toggleLow(index)}>High</button>: <button onClick={() => toggleHigh(index)}>Low</button>}
       </li>
   });
 
