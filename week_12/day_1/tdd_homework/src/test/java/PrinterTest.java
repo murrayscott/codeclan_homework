@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 
 public class PrinterTest {
 
-    Printer printer;
+    private Printer printer;
 
     @Before
     public void setup() {
